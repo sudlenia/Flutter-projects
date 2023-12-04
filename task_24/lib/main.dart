@@ -18,7 +18,7 @@ class MainApp extends StatelessWidget {
               decoration: InputDecoration(
                   filled: true,
                   fillColor: Color.fromARGB(255, 230, 230, 230),
-                  focusColor: Color.fromARGB(255, 128, 0, 187),
+                  color: Color.fromARGB(255, 128, 0, 187),
                   labelText: "E-mail",
                   helperText: "Введите свой e-mail",
                   hintText: "example@sample.com"),
