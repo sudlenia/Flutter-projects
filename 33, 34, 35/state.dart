@@ -15,7 +15,7 @@ class FailureState extends PageState {
 class PageListState extends PageState {
   final int page;
   final int count;
-  final List<Item> list;
+  final List<Item>? list;
 
-  PageListState(this.page, this.count, this.list);
+  PageListState({required this.page, required this.count, this.list});
 }

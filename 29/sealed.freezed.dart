@@ -18,26 +18,26 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$Sealed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() success,
-    required TResult Function() empty,
-    required TResult Function() wrong,
-    required TResult Function() exists,
+    required TResult Function(User user) success,
+    required TResult Function(String errorText) empty,
+    required TResult Function(String errorTex) wrong,
+    required TResult Function(String errorTex) exists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? success,
-    TResult? Function()? empty,
-    TResult? Function()? wrong,
-    TResult? Function()? exists,
+    TResult? Function(User user)? success,
+    TResult? Function(String errorText)? empty,
+    TResult? Function(String errorTex)? wrong,
+    TResult? Function(String errorTex)? exists,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? success,
-    TResult Function()? empty,
-    TResult Function()? wrong,
-    TResult Function()? exists,
+    TResult Function(User user)? success,
+    TResult Function(String errorText)? empty,
+    TResult Function(String errorTex)? wrong,
+    TResult Function(String errorTex)? exists,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -90,6 +90,8 @@ abstract class _$$SuccessImplCopyWith<$Res> {
   factory _$$SuccessImplCopyWith(
           _$SuccessImpl value, $Res Function(_$SuccessImpl) then) =
       __$$SuccessImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({User user});
 }
 
 /// @nodoc
@@ -99,60 +101,84 @@ class __$$SuccessImplCopyWithImpl<$Res>
   __$$SuccessImplCopyWithImpl(
       _$SuccessImpl _value, $Res Function(_$SuccessImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$SuccessImpl(
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$SuccessImpl implements _Success {
-  _$SuccessImpl();
+  _$SuccessImpl(this.user);
+
+  @override
+  final User user;
 
   @override
   String toString() {
-    return 'Sealed.success()';
+    return 'Sealed.success(user: $user)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$SuccessImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$SuccessImpl &&
+            (identical(other.user, user) || other.user == user));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      __$$SuccessImplCopyWithImpl<_$SuccessImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() success,
-    required TResult Function() empty,
-    required TResult Function() wrong,
-    required TResult Function() exists,
+    required TResult Function(User user) success,
+    required TResult Function(String errorText) empty,
+    required TResult Function(String errorTex) wrong,
+    required TResult Function(String errorTex) exists,
   }) {
-    return success();
+    return success(user);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? success,
-    TResult? Function()? empty,
-    TResult? Function()? wrong,
-    TResult? Function()? exists,
+    TResult? Function(User user)? success,
+    TResult? Function(String errorText)? empty,
+    TResult? Function(String errorTex)? wrong,
+    TResult? Function(String errorTex)? exists,
   }) {
-    return success?.call();
+    return success?.call(user);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? success,
-    TResult Function()? empty,
-    TResult Function()? wrong,
-    TResult Function()? exists,
+    TResult Function(User user)? success,
+    TResult Function(String errorText)? empty,
+    TResult Function(String errorTex)? wrong,
+    TResult Function(String errorTex)? exists,
     required TResult orElse(),
   }) {
     if (success != null) {
-      return success();
+      return success(user);
     }
     return orElse();
   }
@@ -196,7 +222,12 @@ class _$SuccessImpl implements _Success {
 }
 
 abstract class _Success implements Sealed {
-  factory _Success() = _$SuccessImpl;
+  factory _Success(final User user) = _$SuccessImpl;
+
+  User get user;
+  @JsonKey(ignore: true)
+  _$$SuccessImplCopyWith<_$SuccessImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -204,6 +235,8 @@ abstract class _$$EmptyImplCopyWith<$Res> {
   factory _$$EmptyImplCopyWith(
           _$EmptyImpl value, $Res Function(_$EmptyImpl) then) =
       __$$EmptyImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorText});
 }
 
 /// @nodoc
@@ -213,60 +246,85 @@ class __$$EmptyImplCopyWithImpl<$Res>
   __$$EmptyImplCopyWithImpl(
       _$EmptyImpl _value, $Res Function(_$EmptyImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorText = null,
+  }) {
+    return _then(_$EmptyImpl(
+      null == errorText
+          ? _value.errorText
+          : errorText // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$EmptyImpl implements _Empty {
-  _$EmptyImpl();
+  _$EmptyImpl(this.errorText);
+
+  @override
+  final String errorText;
 
   @override
   String toString() {
-    return 'Sealed.empty()';
+    return 'Sealed.empty(errorText: $errorText)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$EmptyImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$EmptyImpl &&
+            (identical(other.errorText, errorText) ||
+                other.errorText == errorText));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, errorText);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EmptyImplCopyWith<_$EmptyImpl> get copyWith =>
+      __$$EmptyImplCopyWithImpl<_$EmptyImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() success,
-    required TResult Function() empty,
-    required TResult Function() wrong,
-    required TResult Function() exists,
+    required TResult Function(User user) success,
+    required TResult Function(String errorText) empty,
+    required TResult Function(String errorTex) wrong,
+    required TResult Function(String errorTex) exists,
   }) {
-    return empty();
+    return empty(errorText);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? success,
-    TResult? Function()? empty,
-    TResult? Function()? wrong,
-    TResult? Function()? exists,
+    TResult? Function(User user)? success,
+    TResult? Function(String errorText)? empty,
+    TResult? Function(String errorTex)? wrong,
+    TResult? Function(String errorTex)? exists,
   }) {
-    return empty?.call();
+    return empty?.call(errorText);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? success,
-    TResult Function()? empty,
-    TResult Function()? wrong,
-    TResult Function()? exists,
+    TResult Function(User user)? success,
+    TResult Function(String errorText)? empty,
+    TResult Function(String errorTex)? wrong,
+    TResult Function(String errorTex)? exists,
     required TResult orElse(),
   }) {
     if (empty != null) {
-      return empty();
+      return empty(errorText);
     }
     return orElse();
   }
@@ -310,7 +368,12 @@ class _$EmptyImpl implements _Empty {
 }
 
 abstract class _Empty implements Sealed {
-  factory _Empty() = _$EmptyImpl;
+  factory _Empty(final String errorText) = _$EmptyImpl;
+
+  String get errorText;
+  @JsonKey(ignore: true)
+  _$$EmptyImplCopyWith<_$EmptyImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -318,6 +381,8 @@ abstract class _$$WrongImplCopyWith<$Res> {
   factory _$$WrongImplCopyWith(
           _$WrongImpl value, $Res Function(_$WrongImpl) then) =
       __$$WrongImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorTex});
 }
 
 /// @nodoc
@@ -327,60 +392,85 @@ class __$$WrongImplCopyWithImpl<$Res>
   __$$WrongImplCopyWithImpl(
       _$WrongImpl _value, $Res Function(_$WrongImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorTex = null,
+  }) {
+    return _then(_$WrongImpl(
+      null == errorTex
+          ? _value.errorTex
+          : errorTex // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$WrongImpl implements _Wrong {
-  _$WrongImpl();
+  _$WrongImpl(this.errorTex);
+
+  @override
+  final String errorTex;
 
   @override
   String toString() {
-    return 'Sealed.wrong()';
+    return 'Sealed.wrong(errorTex: $errorTex)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$WrongImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$WrongImpl &&
+            (identical(other.errorTex, errorTex) ||
+                other.errorTex == errorTex));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, errorTex);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$WrongImplCopyWith<_$WrongImpl> get copyWith =>
+      __$$WrongImplCopyWithImpl<_$WrongImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() success,
-    required TResult Function() empty,
-    required TResult Function() wrong,
-    required TResult Function() exists,
+    required TResult Function(User user) success,
+    required TResult Function(String errorText) empty,
+    required TResult Function(String errorTex) wrong,
+    required TResult Function(String errorTex) exists,
   }) {
-    return wrong();
+    return wrong(errorTex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? success,
-    TResult? Function()? empty,
-    TResult? Function()? wrong,
-    TResult? Function()? exists,
+    TResult? Function(User user)? success,
+    TResult? Function(String errorText)? empty,
+    TResult? Function(String errorTex)? wrong,
+    TResult? Function(String errorTex)? exists,
   }) {
-    return wrong?.call();
+    return wrong?.call(errorTex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? success,
-    TResult Function()? empty,
-    TResult Function()? wrong,
-    TResult Function()? exists,
+    TResult Function(User user)? success,
+    TResult Function(String errorText)? empty,
+    TResult Function(String errorTex)? wrong,
+    TResult Function(String errorTex)? exists,
     required TResult orElse(),
   }) {
     if (wrong != null) {
-      return wrong();
+      return wrong(errorTex);
     }
     return orElse();
   }
@@ -424,7 +514,12 @@ class _$WrongImpl implements _Wrong {
 }
 
 abstract class _Wrong implements Sealed {
-  factory _Wrong() = _$WrongImpl;
+  factory _Wrong(final String errorTex) = _$WrongImpl;
+
+  String get errorTex;
+  @JsonKey(ignore: true)
+  _$$WrongImplCopyWith<_$WrongImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -432,6 +527,8 @@ abstract class _$$ExistsImplCopyWith<$Res> {
   factory _$$ExistsImplCopyWith(
           _$ExistsImpl value, $Res Function(_$ExistsImpl) then) =
       __$$ExistsImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String errorTex});
 }
 
 /// @nodoc
@@ -441,60 +538,85 @@ class __$$ExistsImplCopyWithImpl<$Res>
   __$$ExistsImplCopyWithImpl(
       _$ExistsImpl _value, $Res Function(_$ExistsImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? errorTex = null,
+  }) {
+    return _then(_$ExistsImpl(
+      null == errorTex
+          ? _value.errorTex
+          : errorTex // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$ExistsImpl implements _Exists {
-  _$ExistsImpl();
+  _$ExistsImpl(this.errorTex);
+
+  @override
+  final String errorTex;
 
   @override
   String toString() {
-    return 'Sealed.exists()';
+    return 'Sealed.exists(errorTex: $errorTex)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ExistsImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$ExistsImpl &&
+            (identical(other.errorTex, errorTex) ||
+                other.errorTex == errorTex));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, errorTex);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ExistsImplCopyWith<_$ExistsImpl> get copyWith =>
+      __$$ExistsImplCopyWithImpl<_$ExistsImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() success,
-    required TResult Function() empty,
-    required TResult Function() wrong,
-    required TResult Function() exists,
+    required TResult Function(User user) success,
+    required TResult Function(String errorText) empty,
+    required TResult Function(String errorTex) wrong,
+    required TResult Function(String errorTex) exists,
   }) {
-    return exists();
+    return exists(errorTex);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? success,
-    TResult? Function()? empty,
-    TResult? Function()? wrong,
-    TResult? Function()? exists,
+    TResult? Function(User user)? success,
+    TResult? Function(String errorText)? empty,
+    TResult? Function(String errorTex)? wrong,
+    TResult? Function(String errorTex)? exists,
   }) {
-    return exists?.call();
+    return exists?.call(errorTex);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? success,
-    TResult Function()? empty,
-    TResult Function()? wrong,
-    TResult Function()? exists,
+    TResult Function(User user)? success,
+    TResult Function(String errorText)? empty,
+    TResult Function(String errorTex)? wrong,
+    TResult Function(String errorTex)? exists,
     required TResult orElse(),
   }) {
     if (exists != null) {
-      return exists();
+      return exists(errorTex);
     }
     return orElse();
   }
@@ -538,5 +660,10 @@ class _$ExistsImpl implements _Exists {
 }
 
 abstract class _Exists implements Sealed {
-  factory _Exists() = _$ExistsImpl;
+  factory _Exists(final String errorTex) = _$ExistsImpl;
+
+  String get errorTex;
+  @JsonKey(ignore: true)
+  _$$ExistsImplCopyWith<_$ExistsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

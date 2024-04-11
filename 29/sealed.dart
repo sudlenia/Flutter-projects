@@ -6,12 +6,15 @@ void main() {
 
 @freezed
 class Sealed with _$Sealed {
-  factory Sealed.success() = _Success;
+  factory Sealed.success(User user) = _Success;
 
-  factory Sealed.empty() = _Empty;
+  factory Sealed.empty(String errorText) = _Empty;
 
-  factory Sealed.wrong() = _Wrong;
+  factory Sealed.wrong(String errorTex) = _Wrong;
 
-  factory Sealed.exists() = _Exists;
+  factory Sealed.exists(String errorTex) = _Exists;
 
+}
+
+class User {
 }

@@ -6,30 +6,21 @@ class InitialState extends SearchState {}
 
 class FetchListState extends SearchState {}
 
-class FailureFetchListState extends SearchState {
+class FailureState extends SearchState {
   final String errorText;
 
-  FailureFetchListState(this.errorText);
+  FailureState(this.errorText);
 }
 
-class SearchInputState extends SearchState {
-  final String input;
-  final List<Item> list;
+class ListState extends SearchState {
+  final String? input;
+  final List<Item>? list;
 
-  SearchInputState(this.input, this.list);
+  ListState({this.input, this.list});
 }
 
 class SearchListState extends SearchState {
   final String input;
-  final List<Item> list;
 
-  SearchListState(this.input, this.list);
-}
-
-class FailureSearchListState extends SearchState {
-  final String input;
-  final List<Item> list;
-  final String errorText;
-
-  FailureSearchListState(this.input, this.list, this.errorText);
+  SearchListState(this.input);
 }

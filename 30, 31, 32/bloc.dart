@@ -11,23 +11,23 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       emit(FetchListState());
       try {
         final list = await _repository.fetchList();
-        emit(SearchInputState(event.input, list));
+        emit(ListState(list: list));
       } catch (e) {
-        emit(FailureFetchListState("Произошла ошибка при обращении к базе данных"));
+        emit(FailureState("Произошла ошибка при обращении к базе данных"));
       }
     });
 
     on<InputChanged>((event, emit) {
-      emit(SearchInputState(event.input, event.list));
+      emit(ListState(input: event.input));
     });
 
     on<SearchList>((event, emit) async {
-      emit(SearchListState(event.input, event.list));
+      emit(SearchListState(event.input));
       try {
         final newList = await _repository.searchList(searchString: event.input);
-        emit(SearchListState(event.input, newList));
+        emit(ListState(input: event.input, list: newList));
       } catch (e) {
-        emit(FailureFetchListState("Не удаётся найти такой элемент"));
+        emit(FailureState("Не удаётся найти такой элемент"));
       }
     });
   }
