@@ -12,7 +12,7 @@ part of 'bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
 mixin _$PageState {
@@ -645,21 +645,18 @@ mixin _$PageEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchPage,
-    required TResult Function(int page, int count) inputChanged,
     required TResult Function(int page, int count, List<Item> list) changePage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchPage,
-    TResult? Function(int page, int count)? inputChanged,
     TResult? Function(int page, int count, List<Item> list)? changePage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchPage,
-    TResult Function(int page, int count)? inputChanged,
     TResult Function(int page, int count, List<Item> list)? changePage,
     required TResult orElse(),
   }) =>
@@ -667,21 +664,18 @@ mixin _$PageEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchPage value) fetchPage,
-    required TResult Function(_InputChanged value) inputChanged,
     required TResult Function(_ChangePage value) changePage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchPage value)? fetchPage,
-    TResult? Function(_InputChanged value)? inputChanged,
     TResult? Function(_ChangePage value)? changePage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchPage value)? fetchPage,
-    TResult Function(_InputChanged value)? inputChanged,
     TResult Function(_ChangePage value)? changePage,
     required TResult orElse(),
   }) =>
@@ -744,7 +738,6 @@ class _$FetchPageImpl implements _FetchPage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchPage,
-    required TResult Function(int page, int count) inputChanged,
     required TResult Function(int page, int count, List<Item> list) changePage,
   }) {
     return fetchPage();
@@ -754,7 +747,6 @@ class _$FetchPageImpl implements _FetchPage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchPage,
-    TResult? Function(int page, int count)? inputChanged,
     TResult? Function(int page, int count, List<Item> list)? changePage,
   }) {
     return fetchPage?.call();
@@ -764,7 +756,6 @@ class _$FetchPageImpl implements _FetchPage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchPage,
-    TResult Function(int page, int count)? inputChanged,
     TResult Function(int page, int count, List<Item> list)? changePage,
     required TResult orElse(),
   }) {
@@ -778,7 +769,6 @@ class _$FetchPageImpl implements _FetchPage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchPage value) fetchPage,
-    required TResult Function(_InputChanged value) inputChanged,
     required TResult Function(_ChangePage value) changePage,
   }) {
     return fetchPage(this);
@@ -788,7 +778,6 @@ class _$FetchPageImpl implements _FetchPage {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchPage value)? fetchPage,
-    TResult? Function(_InputChanged value)? inputChanged,
     TResult? Function(_ChangePage value)? changePage,
   }) {
     return fetchPage?.call(this);
@@ -798,7 +787,6 @@ class _$FetchPageImpl implements _FetchPage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchPage value)? fetchPage,
-    TResult Function(_InputChanged value)? inputChanged,
     TResult Function(_ChangePage value)? changePage,
     required TResult orElse(),
   }) {
@@ -811,155 +799,6 @@ class _$FetchPageImpl implements _FetchPage {
 
 abstract class _FetchPage implements PageEvent {
   const factory _FetchPage() = _$FetchPageImpl;
-}
-
-/// @nodoc
-abstract class _$$InputChangedImplCopyWith<$Res> {
-  factory _$$InputChangedImplCopyWith(
-          _$InputChangedImpl value, $Res Function(_$InputChangedImpl) then) =
-      __$$InputChangedImplCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int page, int count});
-}
-
-/// @nodoc
-class __$$InputChangedImplCopyWithImpl<$Res>
-    extends _$PageEventCopyWithImpl<$Res, _$InputChangedImpl>
-    implements _$$InputChangedImplCopyWith<$Res> {
-  __$$InputChangedImplCopyWithImpl(
-      _$InputChangedImpl _value, $Res Function(_$InputChangedImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? page = null,
-    Object? count = null,
-  }) {
-    return _then(_$InputChangedImpl(
-      page: null == page
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
-              as int,
-      count: null == count
-          ? _value.count
-          : count // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$InputChangedImpl implements _InputChanged {
-  const _$InputChangedImpl({required this.page, required this.count});
-
-  @override
-  final int page;
-  @override
-  final int count;
-
-  @override
-  String toString() {
-    return 'PageEvent.inputChanged(page: $page, count: $count)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$InputChangedImpl &&
-            (identical(other.page, page) || other.page == page) &&
-            (identical(other.count, count) || other.count == count));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, page, count);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$InputChangedImplCopyWith<_$InputChangedImpl> get copyWith =>
-      __$$InputChangedImplCopyWithImpl<_$InputChangedImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() fetchPage,
-    required TResult Function(int page, int count) inputChanged,
-    required TResult Function(int page, int count, List<Item> list) changePage,
-  }) {
-    return inputChanged(page, count);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchPage,
-    TResult? Function(int page, int count)? inputChanged,
-    TResult? Function(int page, int count, List<Item> list)? changePage,
-  }) {
-    return inputChanged?.call(page, count);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchPage,
-    TResult Function(int page, int count)? inputChanged,
-    TResult Function(int page, int count, List<Item> list)? changePage,
-    required TResult orElse(),
-  }) {
-    if (inputChanged != null) {
-      return inputChanged(page, count);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_FetchPage value) fetchPage,
-    required TResult Function(_InputChanged value) inputChanged,
-    required TResult Function(_ChangePage value) changePage,
-  }) {
-    return inputChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchPage value)? fetchPage,
-    TResult? Function(_InputChanged value)? inputChanged,
-    TResult? Function(_ChangePage value)? changePage,
-  }) {
-    return inputChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchPage value)? fetchPage,
-    TResult Function(_InputChanged value)? inputChanged,
-    TResult Function(_ChangePage value)? changePage,
-    required TResult orElse(),
-  }) {
-    if (inputChanged != null) {
-      return inputChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _InputChanged implements PageEvent {
-  const factory _InputChanged(
-      {required final int page, required final int count}) = _$InputChangedImpl;
-
-  int get page;
-  int get count;
-  @JsonKey(ignore: true)
-  _$$InputChangedImplCopyWith<_$InputChangedImpl> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1051,7 +890,6 @@ class _$ChangePageImpl implements _ChangePage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() fetchPage,
-    required TResult Function(int page, int count) inputChanged,
     required TResult Function(int page, int count, List<Item> list) changePage,
   }) {
     return changePage(page, count, list);
@@ -1061,7 +899,6 @@ class _$ChangePageImpl implements _ChangePage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? fetchPage,
-    TResult? Function(int page, int count)? inputChanged,
     TResult? Function(int page, int count, List<Item> list)? changePage,
   }) {
     return changePage?.call(page, count, list);
@@ -1071,7 +908,6 @@ class _$ChangePageImpl implements _ChangePage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? fetchPage,
-    TResult Function(int page, int count)? inputChanged,
     TResult Function(int page, int count, List<Item> list)? changePage,
     required TResult orElse(),
   }) {
@@ -1085,7 +921,6 @@ class _$ChangePageImpl implements _ChangePage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchPage value) fetchPage,
-    required TResult Function(_InputChanged value) inputChanged,
     required TResult Function(_ChangePage value) changePage,
   }) {
     return changePage(this);
@@ -1095,7 +930,6 @@ class _$ChangePageImpl implements _ChangePage {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchPage value)? fetchPage,
-    TResult? Function(_InputChanged value)? inputChanged,
     TResult? Function(_ChangePage value)? changePage,
   }) {
     return changePage?.call(this);
@@ -1105,7 +939,6 @@ class _$ChangePageImpl implements _ChangePage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchPage value)? fetchPage,
-    TResult Function(_InputChanged value)? inputChanged,
     TResult Function(_ChangePage value)? changePage,
     required TResult orElse(),
   }) {

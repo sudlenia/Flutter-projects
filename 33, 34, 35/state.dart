@@ -12,10 +12,10 @@ class FailureState extends PageState {
   FailureState(this.errorText);
 }
 
-class PageListState extends PageState {
+class LoadPageState extends PageState {
   final int page;
   final int count;
   final List<Item>? list;
 
-  PageListState({required this.page, required this.count, this.list});
+  LoadPageState({required this.page, required this.count, this.list});
 }

@@ -16,35 +16,33 @@ class SearchBloc extends Bloc<PageEvent, PageState> {
       (value, emit) {
         value.map(
             fetchPage: (_) => _fetchPage(emit),
-            inputChanged: (value) => _inputChanged(value, emit),
             changePage: (value) => _changePage(value, emit));
       },
     );
   }
 
   FutureOr<void> _fetchPage(Emitter<PageState> emit) async {
-    const int page = 1;
-    const int count = 1;
+    const int page = 0;
+    const int count = 10;
     emit(const _FetchPageState());
     try {
       final newList = await _repository.fetchPage(page: page, count: count);
       emit(_PageListState(page: page, count: count, list: newList));
     } catch (e) {
-      emit(const _Failure(errorText: "Произошла ошибка при обращении к базе данных"));
+      emit(const _Failure(
+          errorText: "Произошла ошибка при обращении к базе данных"));
     }
-  }
-
-  FutureOr<void> _inputChanged(_InputChanged value, Emitter<PageState> emit) {
-    emit(_PageListState(page: value.page, count: value.count));
   }
 
   FutureOr<void> _changePage(_ChangePage value, Emitter<PageState> emit) async {
     emit(const _FetchPageState());
     try {
-      final newList = await _repository.fetchPage(page: value.page, count: value.count);
+      final newList =
+          await _repository.fetchPage(page: value.page, count: value.count);
       emit(_PageListState(page: value.page, count: value.count, list: newList));
     } catch (e) {
-      emit(const _Failure(errorText: "Произошла ошибка при обращении к базе данных"));
+      emit(const _Failure(
+          errorText: "Произошла ошибка при обращении к базе данных"));
     }
   }
 }
