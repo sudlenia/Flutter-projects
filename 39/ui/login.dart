@@ -86,7 +86,7 @@ class _LoginState extends State<Login> {
                       );
                     },
                   );
-                  FocusScope.of(context).unfocus();
+                  FocusScope.of(context).requestFocus(FocusNode());
                 },
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.lightBlue),
@@ -102,7 +102,7 @@ class _LoginState extends State<Login> {
               BlocProvider.of<LoginBloc>(context).add(
                 const LoginEvent.signInWithSocialWeb(),
               );
-              FocusScope.of(context).unfocus();
+              FocusScope.of(context).requestFocus(FocusNode());
             },
             child: const Text("Войти с помощью VK"),
           ),
