@@ -5,10 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class ProfileWidget extends StatelessWidget {
-  final LoginBloc loginBloc;
-  final AuthBloc authBloc;
 
-  const ProfileWidget({super.key, required this.loginBloc, required this.authBloc});
+  const ProfileWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -48,8 +46,8 @@ class ProfileWidget extends StatelessWidget {
                 ),
                 FilledButton(
                   onPressed: () {
-                    loginBloc.add(const LoginEvent.returnToLogin());
-                    authBloc.add(const AuthEvent.userHasLoggedOut());
+                    context.read<LoginBloc>().add(const LoginEvent.returnToLogin());
+                    context.read<AuthBloc>().add(const AuthEvent.userHasLoggedOut());
                   },
                   style: ButtonStyle(
                     backgroundColor:

@@ -73,10 +73,7 @@ class MainApp extends StatelessWidget {
                                   context.read<AuthBloc>().add(
                                       AuthEvent.userIsLoggedIn(
                                           person: repository.person));
-                                  return ProfileWidget(
-                                    loginBloc: loginBloc,
-                                    authBloc: authBloc,
-                                  );
+                                  return ProfileWidget();
                                 }) ??
                             const LoadingWidget();
                       }));
