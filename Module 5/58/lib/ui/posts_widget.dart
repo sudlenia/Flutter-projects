@@ -3,7 +3,7 @@ import 'package:flutter_application_1/domain/models/post.dart';
 
 class PostsWidget extends StatelessWidget {
   final List<Post> posts;
-const PostsWidget({ Key? key, required this.posts }) : super(key: key);
+const PostsWidget({ super.key, required this.posts });
 
   @override
   Widget build(BuildContext context){

@@ -27,6 +27,7 @@ void main() {
           const Post(userId: 1, id: 1, title: "Title1", body: "body1"),
           const Post(userId: 2, id: 2, title: "Title2", body: "body2")
         ]);
+        verify(() => dio.get(any()));
       });
     });
   });
